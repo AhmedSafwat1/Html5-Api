@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        table{
+            width:700px;
+            padding:10px;
+            margin:10px auto;
+            border:2px solid black;
+            text-align:center;
+        }
+        input{
+            width:120px;
+            padding:10px;
+            border-radius:20px;
+            outline:none;
+        }
+        input:focus{
+            background-color:pink;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', doitfirst);
+        function doitfirst() {
+            sessionkey = document.getElementById('sessionkey');
+            sessionvalue = document.getElementById('sessionvalue');
+            localkey = document.getElementById('localkey');
+            localvalue = document.getElementById('localvalue');
+        }
+        function savesessionfun() {
+            sessionStorage.setItem(sessionkey.value, sessionvalue.value);
+        }
+        function readsessionfun()
+        {
+            alert(sessionStorage.getItem(sessionkey.value));
+        }
+        function savelocalfun() {
+            localStorage.setItem(localkey.value, localvalue.value);
+        }
+        function readlocalfun() {
+            alert(localStorage.getItem(localkey.value));
+        }
+        function clearallfun() {
+            sessionStorage.clear();
+            localStorage.clear();
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <th colspan="2">Browser Storage</th>
+        </tr>
+        <tr>
+            <th colspan="2">Session Storage</th>
+        </tr>
+        <tr>
+            <td><input type="text" id="sessionkey" placeholder="Session Key"/></td>
+            <td><input type="text" id="sessionvalue" placeholder="Session Value" /></td>
+        </tr>
+        <tr>
+            <th colspan="2">Local Storage</th>
+        </tr>
+        <tr>
+            <td><input type="text" id="localkey" placeholder="Local Key" /></td>
+            <td><input type="text" id="localvalue" placeholder="Local Value" /></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="Save Session " onclick="savesessionfun();"/> </td>
+            <td><input type="button" value="Read Session " onclick="readsessionfun();" /> </td>
+        </tr>
+        <tr>
+            <td><input type="button" value="Save Local " onclick="savelocalfun();" /> </td>
+            <td><input type="button" value="Read Local " onclick="readlocalfun();" /> </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" value="Clear All" onclick="clearallfun();"/></td>
+        </tr>
+    </table>
+</body>
+</html>

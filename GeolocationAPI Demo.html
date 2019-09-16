@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #map {
+            width: 600px;
+            height: 600px;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB90FxtYG_ybAYXGkz0ybkmkboE2nEbezI"></script>
+    <script>
+        window.addEventListener('load', doitfirst);
+        function doitfirst() {
+            map = document.getElementById('map');
+        }
+        function getmylocation() {
+            //1- check availability of geolocation
+            if (navigator.geolocation) {
+                //2- get permission getCurrentPosition
+                navigator.geolocation.getCurrentPosition(getposition, errorhandeler);
+            }
+            else {
+                map.innerText = "Update Your Browser and Try Again !";
+            }
+        }
+        function getposition(position) {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            //1- create latlon object from google
+            mylocation = new google.maps.LatLng(lat, lon);
+            //2- cretae specs of image
+            myspecs = { zoom: 17, center: mylocation };
+            //3- receive image 
+            var myimage = new Image();
+            myimage.src = new google.maps.Map(map, myspecs);
+            map.appendChild(myimage);
+            // google steps
+            // 1- create object from lat lon
+            
+            //latlon = lat + ' , ' + lon;
+            //map.innerText = latlon;
+            //console.log(arguments[0]);
+            // alert("Success");
+        }
+        function errorhandeler(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    map.innerText = "PERMISSION_DENIED";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    map.innerText = "POSITION_UNAVAILABLE";
+                    break;
+                case error.TIMEOUT:
+                    map.innerText = "TIMEOUT";
+                    break;
+                case error.UNKOWN_ERROR:
+                    map.innerText = "UNKOWN_ERROR";
+                    break;
+                default:
+            }
+            //alert("Error");
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="GetMyLocation" onclick="getmylocation();"/>
+    <div id="map">
+
+    </div>
+</body>
+</html>

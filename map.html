@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" media="" href="map.css">
+    <script src="map.js"></script>
+    <title>Document</title>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB90FxtYG_ybAYXGkz0ybkmkboE2nEbezI"></script>
+</head>
+<body>
+    <div class="maincontainer">
+        <div class="top">
+            <button id="display">Display Map</button>
+            <button id="displayINfo">Details Information</button>
+        </div>
+        <div class="bootom">
+            <div id="map">
+
+            </div>
+            <div id="result">
+                <label>LAtidu (degree) </label>
+                <input disabled id="la">
+                <label>Longitude (degree)</label>
+                <input disabled id="lo">
+                <label>Acuuracy (m)</label>
+                <input disabled id="ac">
+                <label>time(Current)</label>
+                <input disabled id="tim">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
